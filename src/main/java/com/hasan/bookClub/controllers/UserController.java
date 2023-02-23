@@ -71,15 +71,6 @@ public class UserController {
         session.setAttribute("userId", user.getId());
         return "redirect:/home";
     }
-    @GetMapping("/home")
-    public String dashboard(Model model, HttpSession session) {
-    	if(session.getAttribute("userId")==null) {
-    		return "redirect:/";
-    	}
-    	User user = userServ.findById((Long) session.getAttribute("userId"));
-    	model.addAttribute("user", user);
-    	return "showAll.jsp";
-    }
     @GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();

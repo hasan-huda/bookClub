@@ -15,10 +15,31 @@
         <div class="card">
             <div class="card-header">
                 <h1>Welcome ${user.userName}</h1>
+                <p><a href="/logout">logout</a></p>
+                <p><a href="/books/new">+ Add to my shelf!</a></p>
             </div>
             <div class="card-body">
-                <p>This is your dashboard, nothing to see here yet.</p>
-                <p><a href="/logout">logout</a></p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Posted By</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach var="book" items="${books}">
+                            <tr>
+                                <td><c:out value="${book.id}"/></td>
+                                <td><a href="/books/${book.id}">${book.title}</a></td>
+                                <td><c:out value="${book.author}"/></td>
+                                <td><c:out value="${book.user.userName}"/></td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+                
             </div>
         </div>
     </div>

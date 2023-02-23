@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -27,10 +28,15 @@ public class Book {
     private Long id;
     @NotNull
     @Size(min=1, max=200)
+    @NotEmpty(message="Title is required!")
     private String title;
+    
     @Size(min=1, max=200)
+    @NotEmpty(message="Author is required!")
     private String author;
+    
     @Size(min=1, max=200)
+    @NotEmpty(message="thoughts are required!")
     private String thought;
     @Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
